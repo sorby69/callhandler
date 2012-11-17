@@ -1,0 +1,46 @@
+= form_for @call, :html => { :class => "form-horizontal"} do |f|
+  - if @call.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@call.errors.count, "error")
+        prohibited this call from being saved:
+
+      %ul
+      - @call.errors.full_messages.each do |msg|
+        %li
+          = msg
+
+  .control-group
+    = f.label :caller_name, :class => "control-label"
+    .controls
+      = f.text_field :caller_name, :required => true
+  .control-group
+    = f.label :caller_number, :class => "control-label"
+    .controls
+      = f.text_field :caller_number
+  .control-group
+    = f.label :caller_email, :class => "control-label"
+    .controls
+      = f.text_field :caller_email
+  .control-group
+    = f.label :message, :class => "control-label"
+    .controls
+      = f.text_area :message
+  .control-group
+    = f.label :priority, :class => "control-label"
+    .controls
+      = f.select :priority, PRIORITIES, :include_blank => false
+  .control-group
+    = f.label "Callback?", :class => "control-label"
+    .controls
+      = f.check_box :callback
+  .control-group
+    = f.label :for_user_id, :class => "control-label"
+    .controls
+      = f.select(:for_user_id, options_from_collection_for_select(@users, "id", "email", @call.for_user_id))
+  .control-group
+    = f.label :taken_by_user_id, :class => "control-label"
+    .controls
+      = f.select(:taken_by_user_id, options_from_collection_for_select(@users, "id", "email", @call.taken_by_user_id)) 
+  .actions
+    = f.submit

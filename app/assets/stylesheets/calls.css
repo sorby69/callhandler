@@ -1,0 +1,16 @@
+textarea {
+  height:150px;
+}
+
+.priority_-1 * {
+  text-decoration: line-through;
+}
+.priority_0 {
+  background:#cfc;
+}
+.priority_1 {
+  background:#ccf;
+}
+.priority_2 {
+  background:#fcc;
+}

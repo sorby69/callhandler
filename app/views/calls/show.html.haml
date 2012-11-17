@@ -1,0 +1,39 @@
+%p{:id => "notice"}
+  = notice
+
+%p
+  %b
+    Caller name:
+  = @call.caller_name
+%p
+  %b
+    Caller number:
+  = @call.caller_number
+%p
+  %b
+    Caller email:
+  = @call.caller_email
+%p
+  %b
+    Message:
+  = @call.message
+%p
+  %b
+    Priority:
+  = PRIORITIES[@call.priority][0]
+%p
+  %b
+    Callback:
+  = YESNO[@call.callback.to_i]
+%p
+  %b
+    For user:
+  = @for_user.email.split('@').first
+%p
+  %b
+    Taken by user:
+  = @taken_by_user.email.split('@').first
+
+= link_to 'Edit', edit_call_path(@call)
+|
+= link_to 'Back', calls_path

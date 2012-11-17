@@ -1,0 +1,38 @@
+%table.table.table-striped
+  %tr
+    %th Call Date
+    %th Caller name
+    %th Caller number
+    %th Caller email
+    %th Priority
+    %th Callback
+    %th For user
+    %th Taken by user
+    %th
+    %th
+    %th
+
+  - @calls.each do |call|
+    %tr
+      %td
+        = call.created_at
+      %td
+        = call.caller_name
+      %td
+        = call.caller_number
+      %td
+        = call.caller_email
+      %td{:class => "priority_#{call.priority}" }
+        = PRIORITIES[call.priority][0]
+      %td
+        = YESNO[call.callback.to_i]
+      %td
+        = @users.find(call.for_user_id).first.email.split('@').first
+      %td
+        = @users.find(call.taken_by_user_id).first.email.split('@').first
+      %td
+        = link_to 'Show', call
+      %td
+        = link_to 'Edit', edit_call_path(call)
+      %td
+        = link_to 'Destroy', call, method: :delete, data: { confirm: 'Are you sure?' }

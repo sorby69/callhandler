@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  caller_name: MyString
+  caller_number: MyString
+  caller_email: MyString
+  message: MyString
+  priority: 1
+  callback: 
+  for_user_id: MyString
+  taken_by_user_id: MyString
+
+two:
+  caller_name: MyString
+  caller_number: MyString
+  caller_email: MyString
+  message: MyString
+  priority: 1
+  callback: 
+  for_user_id: MyString
+  taken_by_user_id: MyString
